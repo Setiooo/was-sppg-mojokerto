@@ -1,0 +1,542 @@
+/*
+ * portal-masyarakat.css
+ * Stylesheet pendamping untuk komponen Portal Masyarakat yang di-re-author memakai class CSS
+ * (menggantikan inline style pada bundel asli). Memakai variabel warna & font dari app.css.
+ * app.css tetap menjadi sumber utama untuk layout dasar (sidebar, tombol, tabel, form, toast, dst.).
+ */
+
+/* ============ Layout shell ============ */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--cream);
+}
+.app-layout .main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem;
+}
+@media (max-width: 860px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  .app-layout .main-content {
+    padding: 1rem;
+    padding-top: 4.5rem;
+  }
+}
+
+/* Topbar mobile + tombol hamburger */
+.mobile-topbar {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 0.65rem 1rem;
+  background: var(--g-deep);
+  color: #fff;
+}
+.mobile-only-flex {
+}
+@media (max-width: 860px) {
+  .mobile-topbar {
+    display: flex;
+  }
+}
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+.logo-box-ghost {
+  background: rgba(255, 255, 255, 0.12);
+}
+.logo-sm {
+  font-size: 1rem;
+}
+.logo-lg {
+  font-size: 1.6rem;
+}
+.ni {
+  margin-right: 0.5rem;
+}
+.su-name {
+  font-weight: 600;
+}
+.su-role {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+.su-logout {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* ============ Kartu blokir (banned / limit) ============ */
+.block-card {
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.block-card-red {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.block-card-amber {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+.block-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.block-card p {
+  color: var(--muted);
+  margin: 0.5rem 0 1rem;
+}
+
+/* ============ Panel verifikasi berlapis ============ */
+.hv-panel {
+  background: var(--g-pale);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.hv-panel-title {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+  color: var(--g-deep);
+}
+.hv-step {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.85rem;
+}
+.hv-step:last-child {
+  margin-bottom: 0;
+}
+.hv-step-num {
+  flex: 0 0 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: #e5e7eb;
+  color: var(--muted);
+}
+.hv-step-num.active {
+  background: var(--blue);
+  color: #fff;
+}
+.hv-step-num.done {
+  background: var(--g-bright);
+  color: #fff;
+}
+.hv-step-title {
+  font-weight: 600;
+}
+.hv-step-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ============ Form: GPS, deskripsi, foto ============ */
+.gps-block {
+  margin-bottom: 1.25rem;
+}
+.gps-btn {
+  margin-bottom: 0.5rem;
+}
+.gps-pesan {
+  font-size: 0.85rem;
+  color: var(--g-mid);
+  background: var(--g-pale);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+}
+.label-hint {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.deskripsi-input {
+  min-height: 110px;
+  resize: vertical;
+}
+.desk-meter {
+  margin-top: 0.4rem;
+}
+.desk-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+.foto-warning {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+.foto-dropzone {
+  border: 2px dashed var(--g-bright);
+  border-radius: 12px;
+  padding: 1.4rem;
+  text-align: center;
+  cursor: pointer;
+  background: var(--g-pale);
+  transition: background 0.15s;
+}
+.foto-dropzone:hover {
+  background: var(--g-light);
+}
+.foto-dropzone.has-foto {
+  border-style: solid;
+}
+.foto-cta {
+  font-weight: 600;
+  color: var(--g-mid);
+}
+.foto-count {
+  font-weight: 600;
+  color: var(--g-deep);
+}
+.submit-ready {
+  margin: 1rem 0;
+  padding: 0.7rem;
+  border-radius: 10px;
+  text-align: center;
+  background: var(--g-light);
+  color: var(--g-deep);
+  font-weight: 600;
+}
+.submit-todo {
+  margin: 1rem 0;
+  padding: 0.7rem;
+  border-radius: 10px;
+  text-align: center;
+  background: #f3f4f6;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.privacy-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: var(--g-pale);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  margin: 1rem 0;
+}
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.btn-kirim {
+  flex: 1;
+  padding: 0.8rem;
+}
+
+/* ============ Riwayat ============ */
+.riwayat-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.table-header {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.table-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.cell-waktu {
+  white-space: nowrap;
+}
+.cell-muted {
+  color: var(--muted);
+}
+.cell-muted-sm {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.cell-sekolah {
+  font-weight: 500;
+}
+.cell-jenis {
+  font-size: 0.85rem;
+}
+
+/* ============ Jejak audit ============ */
+.chain-summary {
+  background: var(--g-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+.chain-valid {
+  color: var(--g-mid);
+  font-weight: 700;
+}
+.chain-item {
+  display: flex;
+  gap: 1rem;
+}
+.chain-block-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chain-block-no {
+  flex: 0 0 auto;
+  min-width: 56px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  background: var(--g-deep);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.35rem 0.4rem;
+}
+.chain-connector {
+  width: 2px;
+  flex: 1;
+  background: var(--border);
+  margin: 0.25rem 0;
+}
+.chain-body {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+.chain-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.chain-laporan {
+  font-weight: 600;
+}
+.chain-ts {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.chain-hashes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+}
+.chain-hash {
+  font-family: ui-monospace, monospace;
+  color: var(--g-mid);
+}
+
+/* ============ Notifikasi ============ */
+.notif-item {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--g-bright);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.8rem;
+  background: #fff;
+}
+.notif-item.unread {
+  background: var(--g-pale);
+}
+.notif-item.amber {
+  border-left-color: var(--amber);
+}
+.notif-item.red {
+  border-left-color: var(--red);
+}
+.notif-item h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+.notif-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ============ Kamera ============ */
+.camera-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+.camera-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  color: #fff;
+}
+.camera-round-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.camera-title {
+  font-weight: 600;
+}
+.camera-video,
+.camera-preview {
+  flex: 1;
+  width: 100%;
+  object-fit: cover;
+  min-height: 0;
+}
+.camera-canvas {
+  display: none;
+}
+.camera-error {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+.camera-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+.camera-shutter {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #fff;
+  border: 5px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+.camera-shutter:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ============ Landing ============ */
+.landing {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+.landing-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.landing-hero h1 {
+  font-family: "Syne", sans-serif;
+  font-size: 2rem;
+  color: var(--g-deep);
+  margin: 1rem 0 0.75rem;
+}
+.landing-hero p {
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+.landing-hero .logo {
+  justify-content: center;
+}
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.portal-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-align: center;
+}
+.portal-icon {
+  font-size: 2.4rem;
+}
+.portal-card h3 {
+  font-family: "Syne", sans-serif;
+  margin: 0.6rem 0 0.4rem;
+  color: var(--g-deep);
+}
+.portal-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  min-height: 3.2em;
+  margin-bottom: 1rem;
+}
+.landing-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 3rem;
+}
+.modal-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  width: min(420px, 92vw);
+}
+.modal-card h3 {
+  margin-top: 0;
+  font-family: "Syne", sans-serif;
+}
+.modal-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0.25rem 0 1rem;
+}
