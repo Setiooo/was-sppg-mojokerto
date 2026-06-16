@@ -1,4 +1,4 @@
-# WAS-SPPG — Warga Awasi Sekolah (Kota Mojokerto)
+# WAS-SPPG  Warga Awasi Sekolah (Kota Mojokerto)
 
 Platform pengawasan partisipatif program **Makan Bergizi Gratis (MBG)** Kota Mojokerto.
 Versi modular (React + Parcel) hasil re-author dari prototipe HTML tunggal.
